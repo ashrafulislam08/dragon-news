@@ -9,8 +9,15 @@ const HomeLayout = () => {
       <Header />
       <section className="w-11/12 mx-auto">
         <LatestNews />
-        <Navbar />
       </section>
+      <nav className="w-11/12 mx-auto py-2">
+        <Navbar />
+      </nav>
+      <main className="w-11/12 mx-auto pt-5 grid md:grid-cols-12 gap-3">
+        <aside className="col-span-3">Left side</aside>
+        <section className="col-span-6">Main content</section>
+        <aside className="col-span-3">right side</aside>
+      </main>
     </div>
   );
 };
