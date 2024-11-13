@@ -1,4 +1,6 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
 
 const LatestNews = () => {
   return (
@@ -6,10 +8,23 @@ const LatestNews = () => {
       <p className="bg-[#D72050] text-white px-5 py-2 text-lg font-semibold">
         Latest
       </p>
-      <marquee behavior="" direction="" className="font-bold text-xl">
-        Match Highlights: Germany vs Spain — as it happened ! Match Highlights:
-        Germany vs Spain as...
-      </marquee>
+      <Marquee pauseOnHover={true} speed={100} className="space-x-10">
+        <Link to="/">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          nihil amet expedita illum nemo magni architecto odit facere velit
+          voluptatem.
+        </Link>
+        <Link to="/">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          nihil amet expedita illum nemo magni architecto odit facere velit
+          voluptatem.
+        </Link>
+        <Link to="/">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          nihil amet expedita illum nemo magni architecto odit facere velit
+          voluptatem.
+        </Link>
+      </Marquee>
     </div>
   );
 };
