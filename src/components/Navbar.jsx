@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import userIcon from "../assets/user.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="flex justify-between mt-4">
-      <div className=""></div>
+      <div className="">{user && user.name.toUpperCase()}</div>
       <div className="space-x-5">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
