@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -14,8 +15,10 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setUser(result.user);
+        e.target.reset();
+        navigate("/");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => alert(error.code));
   };
   return (
     <div className="min-h-screen py-10">

@@ -1,4 +1,5 @@
 import { FaRegEye, FaStar, FaShareAlt, FaRegBookmark } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function NewsCard({ news }) {
   return (
@@ -36,7 +37,12 @@ function NewsCard({ news }) {
         <h3 className="text-lg font-bold text-gray-800 mb-2">{news.title}</h3>
         <p className="text-sm text-gray-600 mb-4">
           {news.details.slice(0, 100)}...{" "}
-          <span className="text-blue-500 cursor-pointer">Read More</span>
+          <Link
+            to={`/news/${news._id}`}
+            className="text-blue-500 cursor-pointer"
+          >
+            Read More
+          </Link>
         </p>
       </div>
 
