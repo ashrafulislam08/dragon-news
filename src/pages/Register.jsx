@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
+  const { createNewUser, setUser } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const photoUrl = form.photoUrl.value;
-    const email = form.email.value;
-    const password = form.password.value;
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const email = form.get("email");
+    const photo = form.get("photo");
+    const password = form.get("password");
+    console.log({ name, email, photo, password });
 
-    console.log(name, photoUrl, email, password);
+    createNewUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -38,7 +47,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="photoUrl"
+              name="photo"
               placeholder="photo-url"
               className="input input-bordered"
               required
@@ -67,11 +76,6 @@ const Register = () => {
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-neutral">Register</button>
